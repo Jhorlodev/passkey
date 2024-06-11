@@ -34,6 +34,7 @@ const App = () => {
     } catch (error) {
       alert(error.message);
     }
+    reset()
   };
 
   

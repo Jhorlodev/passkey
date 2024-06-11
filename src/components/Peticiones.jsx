@@ -41,8 +41,23 @@ export default function App() {
     setBusquedaRealizada(true);
   };
 
+  
+  const eliminar = async (id) => {
+    try{
+      const {data, error} = await supabase
+        .from('datos')
+        .delete()
+        .eq('id', id);
+        if(error) throw error;
+        window.location.reload();
+    } catch(error){
+      alert(error.message);
+    }
+  }
+
+
   return (
-    <main className="h-screen">
+    <main className=" h-screen bg-[#00171f] ">
       <a
         href="/"
         className="flex justify-end text-white text-2xl font-bold pt-8 pr-10 pb-6"
@@ -50,11 +65,11 @@ export default function App() {
         Volver a Inicio
       </a>
       <form
-        className="flex items-center justify-center gap-2 pb-5"
+        className="flex items-center justify-center gap-2 pb-5  "
         onSubmit={handleSubmit}
       >
         <input
-          className="border-2 border-violet-500 rounded-lg text-gray-200 text-center py-2.5 text-bolt bg-[#3b426a]"
+          className="border-2 border-violet-500 rounded-lg text-gray-200 text-center py-2.5  text-bolt bg-[#3b426a]"
           type="text"
           value={busqueda}
           placeholder="Descripcion a Buscar"
@@ -62,24 +77,24 @@ export default function App() {
         />
         <button
           type="submit"
-          className="grid rounded-lg bg-indigo-500 text-white py-3 px-2 gap-1.5 font-bold"
+          className="grid rounded-lg bg-indigo-500 text-white py-3 px-3 gap-1.5 font-bold"
         >
           Buscar
         </button>
       </form>
 
       {busquedaRealizada && (
-        <div className="grid rounded-lg bg-indigo-500 text-white py-3 px-3 font-bold mx-4">
-          <div>
+        <div className="flex rounded-lg  text-white py-3  font-bold sm:mx-auto  sm:justify-center  md:justify-center ">
+          <div className='md:w-1/3' >
             <div className="grid gap-2 py-3 px-3">
               <h1>Datos:</h1>
-              {resultados.map((item, id) => (
-                <ul key={id} className="grid rounded-lg bg-blue-950 text-white py-3 pl-3 gap-2 font-bold">
-                  <div>{item.id}</div>
-                  <div>Descripcion: {item.descripcion}</div>
+              {resultados.map((item, index) => (
+                <ul key={index} className="grid rounded-lg bg-blue-950 text-white py-3 px-8 gap-2 font-bold  ">
+                  
+                  <div>Descripcion:  {item.descripcion}</div>
                   <div>Correo: {item.correo}</div>
                   <div>Contraseña: {item.contraseña}</div>
-                  <div className="grid grid-cols-2 gap-2 w-4/5 mx-auto">
+                  <div className="grid grid-cols-2 gap-3 w-4/5 mx-auto py-5">
                     <button
                       type="Edit"
                       className="grid rounded-lg bg-indigo-500 text-white font-bold py-3"
@@ -88,6 +103,7 @@ export default function App() {
                     </button>
                     <button
                       type="button"
+                      onClick={() => eliminar(item.id)}
                       className="grid rounded-lg bg-indigo-500 text-white py-3 px-1 gap-1.5 font-bold"
                     >
                       Eliminar

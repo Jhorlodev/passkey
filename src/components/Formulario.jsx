@@ -20,7 +20,7 @@ const App = () => {
     });
   };
 
-  const handleSubmit = async (e) => {
+const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const { data, error } = await supabase
@@ -29,14 +29,14 @@ const App = () => {
         .single();
       if (error) throw error;
       if (data != null) {
-        setData(data);
+        setDatos(data);
       }
+      // Restablecer los campos a valores iniciales después de enviar el formulario
+      e.target.reset()
     } catch (error) {
       alert(error.message);
     }
-    reset()
   };
-
   
   return (
     <div className="container ml-auto mr-auto flex flex-col items-center justify-center">
@@ -71,7 +71,7 @@ const App = () => {
                   Correo:
                 </label>
                 <input
-                  className="border-2 border-violet-500 rounded-lg text-gray-200 text-center py-3 px-14 text-bolt bg-[#3b426a] hover:bg-violet-600"
+                  className="border-2 border-violet-500 rounded-lg text-gray-200 text-center py-3 px-14 text-bolt bg-[#3b426a] "
                   name="correo"
                   type="email"
                   placeholder="Correo@correo.com"

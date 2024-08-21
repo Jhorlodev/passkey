@@ -51,12 +51,7 @@ const handleSubmit = async (e) => {
                 <h1 className="font-bold text-4xl text-white mb-8 underline underline-offset-8 flex justify-center items-center">
                   <strong>Caja Fuerte</strong>
                 </h1>
-                <a
-                  href="DataResult"
-                  className="flex justify-end text-white text-2xl font-bold pt-8 pr-10 pb-6"
-                >
-                  Busqueda De Datos
-                </a>
+               
                 <label className="text-white flex gap-0 text-2xl font-semibold">
                   Descripcion:
                 </label>
@@ -93,6 +88,12 @@ const handleSubmit = async (e) => {
                 >
                   Enviar
                 </button>
+                <a
+                  href="DataResult"
+                  className="rounded-lg bg-indigo-500 text-white py-3 px-14 mt-8 font-bold"
+                >
+                  Busqueda De Datos
+                </a>
               </div>
             </div>
           </div>

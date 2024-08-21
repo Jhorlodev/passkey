@@ -13,7 +13,7 @@ export default function App() {
   const [elementoSeleccionado, setElementoSeleccionado] = useState(null);
 
   useEffect(() => {
-    const fetchDatos = async () => {
+    const fetchDatos = async () => { 
       try {
         const { data, error } = await supabase.from('datos').select('*');
         if (error) throw error;
@@ -90,12 +90,15 @@ export default function App() {
 
   return (
     <main className="h-screen">
-      <a
-        href="/"
-        className="flex justify-end text-white text-2xl font-bold pt-8 pr-10 pb-6"
-      >
-        Volver a Inicio
-      </a>
+      <div className='flex justify-end mb-10'>
+          <a
+            href="/"
+            className="rounded-lg bg-indigo-500  justify-end text-white py-3 px-14 mt-8 font-bold"
+          >
+            Volver a Inicio
+          </a>
+      </div>
+     
       <form
         className="flex items-center justify-center gap-2 pb-5"
         onSubmit={handleSubmit}
@@ -121,21 +124,21 @@ export default function App() {
             <div className="grid gap-2 py-3 px-3 text-gray-300">
               <h1>Datos:</h1>
               {resultados.map((item, index) => (
-                <ul key={index} className="grid shadow-lg shadow-cyan-200/50 mb-5 rounded-lg text-gray-300 bg-blue-900  m-1 py-8  p-6 gap-2 font-bold ">
+                <ul key={index} className="grid shadow-lg shadow-[#8d7ccb]  border-2 border-violet-500 mb-5 rounded-lg text-[#e7d6ee]   m-1 py-8  p-6 gap-2 font-bold ">
                   <div>Descripcion: {item.descripcion}</div>
                   <div>Correo: {item.correo}</div>
                   <div>Contraseña: {item.contraseña}</div>
-                  <div className="grid grid-cols-2 gap-2 w-4/6 mx-auto pt-8">
+                  <div className="grid grid-cols-2 gap-10 w-4/6 mx-auto pt-8">
                     <button
                       type="button"
-                      className="border-solid border-2 border-green-300 inline-flex items-center justify-center rounded-xl bg-[#10b981] py-3 px-6 font-dm text-base font-medium text-[#15803d] shadow-lg shadow-[#bef264] transition-transform duration-200 ease-in-out hover:scale-[1.02]"
+                      className="border-solid border-2 border-green-300 inline-flex items-center justify-center rounded-xl  py-3 px-6 font-dm text-base font-medium text-[#58db88] shadow-sm shadow-green-500/75 transition-transform duration-200 ease-in-out hover:scale-[1.02]"
                       onClick={() => editar(item)}
                     >
                       Editar
                     </button>
                     <button
                       type="button"
-                      className="border-solid border-2 border-red-400/35 inline-flex items-center justify-center rounded-xl bg-red-500/85 py-3 px-6 font-dm text-base font-medium text-white shadow-lg shadow-red-300/75 transition-transform duration-200 ease-in-out hover:scale-[1.02]"
+                      className="border-solid border-2 border-[#ff2a2a] inline-flex items-center justify-center rounded-xl py-3 px-6 font-dm text-base font-medium text-[#ff2a2a] shadow-sm shadow-red-500/75 transition-transform duration-200 ease-in-out hover:scale-[1.02]"
                       onClick={() => eliminar(item.id)}
                     >
                       Eliminar
@@ -149,7 +152,7 @@ export default function App() {
       )}
 
       {elementoSeleccionado && (
-        <div className="grid rounded-lg bg-indigo-500 text-white py-3 px-3 font-bold mx-4">
+        <div  className="grid shadow-lg shadow-[#8d7ccb]  border-2 border-violet-500 mb-5 rounded-lg text-[#e7d6ee]  justify-center   m-1 py-8  p-6 gap-2  md:w-[70%] lg:max-w-[48%] lg:h-64 mx-auto ">
           <form className="flex flex-col items-center gap-2 pb-5" onSubmit={actualizar}>
             <input
               className="border-2 border-violet-500 rounded-lg text-gray-200 text-center py-2.5 text-bolt bg-[#3b426a]"
@@ -189,7 +192,7 @@ export default function App() {
             />
             <button
               type="submit"
-              className="grid rounded-lg bg-amber-950 text-white py-3 px-2 gap-1.5 font-bold"
+              className="grid rounded-lg  text-[#f3ec2f] border border-[#f3ec2f] shadow-sm shadow-[#f3ec2f] py-2 px-10 font-bolt "
             >
               Actualizar
             </button>

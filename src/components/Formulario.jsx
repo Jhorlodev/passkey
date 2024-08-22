@@ -1,5 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { createClient } from '@supabase/supabase-js';
+import { FaLock } from "react-icons/fa";
+import { LuSend } from "react-icons/lu";
+import { FaMagnifyingGlass } from "react-icons/fa6";
 
 const supabaseUrl = 'https://glxjuubfbueivfedkuzz.supabase.co';
 const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdseGp1dWJmYnVlaXZmZWRrdXp6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTM0ODg4NTQsImV4cCI6MjAyOTA2NDg1NH0.uBI5fP-F9nJ9_hMeoDKzp1yBWgRCXgrLyBM5YwPceyw';
@@ -48,8 +51,12 @@ const handleSubmit = async (e) => {
           <div className="mb-4">
             <div className="grid grid-flow-row sm:grid-flow-col gap-4">
               <div className="sm:col-span-4 justify-center flex flex-col gap-2">
-                <h1 className="font-bold text-4xl text-white mb-8 underline underline-offset-8 flex justify-center items-center">
-                  <strong>Caja Fuerte</strong>
+                <h1 className="font-bold text-5xl text-white mb-8  flex justify-center items-center mx-auto">
+                  <FaLock className='h-14 w-14 mr-8' />
+                  <strong >
+                     
+                    PASSKEY
+                    </strong>
                 </h1>
                
                 <label className="text-white flex gap-0 text-2xl font-semibold">
@@ -83,16 +90,19 @@ const handleSubmit = async (e) => {
                   onChange={handleChange}
                 />
                 <button
-                  className="rounded-lg bg-indigo-500 text-white py-3 px-14 mt-8 font-bold"
+                  className="flex justify-center items-center gap-4 rounded-lg bg-indigo-500  border-2 border-[#ac84f1] text-white text-lg py-3 px-14 mt-8 font-bold"
                   type="submit"
                 >
                   Enviar
+                  <strong> <LuSend className='h-6 w-6'/></strong>
+                 
                 </button>
                 <a
                   href="DataResult"
-                  className="rounded-lg bg-indigo-500 text-white py-3 px-14 mt-8 font-bold"
+                  className="flex justify-center items-center gap-4 rounded-lg bg-indigo-500 border-2 border-[#ac84f1] text-white text-lg py-3 px-14 mt-8 font-bold"
                 >
                   Busqueda De Datos
+                  <FaMagnifyingGlass className='h-6 w-6'/>
                 </a>
               </div>
             </div>

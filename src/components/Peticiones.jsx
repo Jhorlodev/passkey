@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { createClient } from '@supabase/supabase-js';
+import { FaArrowCircleLeft } from "react-icons/fa";
+import { FaMagnifyingGlass } from "react-icons/fa6";
 
 const supabaseUrl = 'https://glxjuubfbueivfedkuzz.supabase.co';
 const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdseGp1dWJmYnVlaXZmZWRrdXp6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTM0ODg4NTQsImV4cCI6MjAyOTA2NDg1NH0.uBI5fP-F9nJ9_hMeoDKzp1yBWgRCXgrLyBM5YwPceyw';
@@ -90,11 +92,13 @@ export default function App() {
 
   return (
     <main className="h-screen">
-      <div className='flex justify-end mb-10'>
+      <div className='flex justify-end mb-10 '>
+           
           <a
             href="/"
-            className="rounded-lg bg-indigo-500  justify-end text-white py-3 px-14 mt-8 font-bold"
+            className="flex items-center gap-3 rounded-lg bg-indigo-500  justify-end mr-5 border-2 border-[#ac84f1] text-white py-3 px-14 mt-8 font-bold"
           >
+          <FaArrowCircleLeft className='h-6 w-6' />
             Volver a Inicio
           </a>
       </div>
@@ -112,8 +116,9 @@ export default function App() {
         />
         <button
           type="submit"
-          className="grid rounded-lg bg-indigo-500 text-white py-3 px-2 gap-1.5 font-bold"
+          className="flex items-center justify-center border-2 border-[#ac84f1] rounded-lg bg-indigo-500 text-white py-3 px-2 gap-2 font-bold"
         >
+          <FaMagnifyingGlass className='h-6 w-6'/>
           Buscar
         </button>
       </form>

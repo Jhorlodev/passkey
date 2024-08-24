@@ -99,7 +99,7 @@ const handleSubmit = async (e) => {
                 </button>
                 <a
                   href="DataResult"
-                  className="flex justify-center items-center gap-4 rounded-lg bg-indigo-500 border-2 border-[#ac84f1] text-white text-lg py-3 px-14 mt-8 font-bold"
+                  className="flex justify-center items-center gap-4 rounded-lg bg-indigo-500 border-2 border-[#ac84f1] text-white text-lg py-3  mt-8 font-bold"
                 >
                   Busqueda De Datos
                   <FaMagnifyingGlass className='h-6 w-6'/>

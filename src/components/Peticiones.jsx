@@ -3,9 +3,12 @@ import { createClient } from '@supabase/supabase-js';
 import { FaArrowCircleLeft } from "react-icons/fa";
 import { FaMagnifyingGlass } from "react-icons/fa6";
 
-const supabaseUrl = 'https://glxjuubfbueivfedkuzz.supabase.co';
-const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdseGp1dWJmYnVlaXZmZWRrdXp6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTM0ODg4NTQsImV4cCI6MjAyOTA2NDg1NH0.uBI5fP-F9nJ9_hMeoDKzp1yBWgRCXgrLyBM5YwPceyw';
+const supabaseUrl = import.meta.env.PUBLIC_SUPABASE_URL;
+const supabaseKey = import.meta.env.PUBLIC_SUPABASE_KEY;
+
 const supabase = createClient(supabaseUrl, supabaseKey);
+
+console.log(supabase)
 
 export default function App() {
   const [data, setData] = useState([]);

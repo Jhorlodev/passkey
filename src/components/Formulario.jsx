@@ -4,8 +4,9 @@ import { FaLock } from "react-icons/fa";
 import { LuSend } from "react-icons/lu";
 import { FaMagnifyingGlass } from "react-icons/fa6";
 
-const supabaseUrl = 'https://glxjuubfbueivfedkuzz.supabase.co';
-const supabaseKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImdseGp1dWJmYnVlaXZmZWRrdXp6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3MTM0ODg4NTQsImV4cCI6MjAyOTA2NDg1NH0.uBI5fP-F9nJ9_hMeoDKzp1yBWgRCXgrLyBM5YwPceyw';
+const supabaseUrl = import.meta.env.PUBLIC_SUPABASE_URL;
+const supabaseKey = import.meta.env.PUBLIC_SUPABASE_KEY;
+
 
 const supabase = createClient(supabaseUrl, supabaseKey);
 
@@ -40,7 +41,7 @@ const handleSubmit = async (e) => {
       alert(error.message);
     }
   };
-  
+ 
   return (
     <div className="container ml-auto mr-auto flex flex-col items-center justify-center">
       <div className="w-full md:w-1/2">

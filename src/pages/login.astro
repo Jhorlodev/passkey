@@ -1,0 +1,23 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import LoginForm from "@/components/Login.jsx";
+---
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Iniciar Sesión</title>
+  </head>
+
+  <Layout title="login">
+    <body>
+      <h1 class="text-white text-3xl font-bold text-center mt-10 mx-auto pb-8">
+        iniciar sesion
+      </h1>
+      <LoginForm client:load />
+    </body>
+  </Layout>
+</html>

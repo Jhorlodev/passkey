@@ -5,7 +5,7 @@ import { LuSend } from "react-icons/lu";
 import { FaMagnifyingGlass } from "react-icons/fa6";
 
 const supabaseUrl = import.meta.env.PUBLIC_SUPABASE_URL;
-const supabaseKey = import.meta.env.PUBLIC_SUPABASE_KEY;
+const supabaseKey = import.meta.env.PUBLIC_SUPABASE_ANON_KEY;
 
 
 const supabase = createClient(supabaseUrl, supabaseKey);

@@ -1,58 +1,57 @@
 import React, { useState } from 'react';
-import { cliente } from '@/supabase/Client'
+import { createClient } from '@supabase/supabase-js';
 
+// Inicializa el cliente de Supabase
+const supabase = createClient(
+  import.meta.env.PUBLIC_SUPABASE_URL,
+  import.meta.env.PUBLIC_SUPABASE_ANON_KEY
+);
 
-const Login = () => {
+export default function LoginForm() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [error, setError] = useState(null);
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
+  const handleLogin = async (e) => {
+    e.preventDefault();
     try {
-    const result = await cliente.auth.signInWithPassword({
-      email,
-      password
-    });
-    console.log(result);
-   
-      const response = await fetch('/api/login', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({ email, password }),
+      const { user, error } = await supabase.auth.signInWithPassword({
+        email,
+        password
       });
-      const data = await response.json();
-      // Manejar la respuesta del servidor
-      console.log(data);
+
+      if (error) throw error;
+
+      // Redirige a la página del formulario
+      window.location.href = '/formulario'; // Asegúrate de que la ruta sea correcta
+      console.log('Sesión iniciada:', user);
     } catch (error) {
-      console.error(error);
+      setError(error.message);
     }
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <div>
-        <label htmlFor="email">Correo electrónico:</label>
+    <form onSubmit={handleLogin} className='flex flex-col gap-4 mt-10 bg-[#1b1b32] mx-auto justify-center rounded p-4 h-[300px] max-w-lg shadow-lg shadow-purple-950'>
+      <div className='flex flex-col gap-4 justify-center'>
         <input
+          className='py-1 px-4 rounded-lg bg-gray-300'
           type="email"
-          id="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
+          placeholder="Correo electrónico"
+          required
         />
-      </div>
-      <div>
-        <label htmlFor="password">Contraseña:</label>
         <input
+          className='py-1 px-4 rounded'
           type="password"
-          id="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+          placeholder="Contraseña"
+          required
         />
+        <button className='flex items-center cursor-pointer gap-2 rounded-lg px-3 py-[10px] transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed bg-button text-white shadow-button hover:shadow-button-hover hover:scale-110 ml-auto font-medium shadow-sm shadow-purple-900/50 bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 w-44 justify-center mx-auto' type="submit">Iniciar Sesión</button>
+        {error && <p>{error}</p>}
       </div>
-      <button type="submit">Iniciar sesión</button>
     </form>
   );
-};
-
-export default Login;
+}

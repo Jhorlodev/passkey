@@ -1,0 +1,25 @@
+---
+import Layout from '@/layouts/Layout.astro';
+import Register from '@/components/register.jsx';
+---
+
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>Registro de Usuarios</title>
+  </head>
+  <Layout title="Registro de Usuario" >
+  <body>
+    <main>
+      
+        <h1 class="text-3xl text-white font-bold text-center mt-10">Registro de Usuario</h1>
+        <Register client:load />
+
+      
+    </main>
+  </body>
+</Layout >
+  </html>

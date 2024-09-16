@@ -4,7 +4,7 @@ import { FaArrowCircleLeft } from "react-icons/fa";
 import { FaMagnifyingGlass } from "react-icons/fa6";
 
 const supabaseUrl = import.meta.env.PUBLIC_SUPABASE_URL;
-const supabaseKey = import.meta.env.PUBLIC_SUPABASE_KEY;
+const supabaseKey = import.meta.env.PUBLIC_SUPABASE_ANON_KEY;
 
 const supabase = createClient(supabaseUrl, supabaseKey);
 
@@ -98,7 +98,7 @@ export default function App() {
       <div className='flex justify-end mb-10 '>
            
           <a
-            href="/"
+            href="/formulario"
             className="flex items-center gap-3 rounded-lg bg-indigo-500  justify-end mr-5 border-2 border-[#ac84f1] text-white py-3 px-14 mt-8 font-bold"
           >
           <FaArrowCircleLeft className='h-6 w-6' />
